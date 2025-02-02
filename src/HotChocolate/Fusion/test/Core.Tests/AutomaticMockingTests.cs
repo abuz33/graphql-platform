@@ -42,7 +42,7 @@ public class AutomaticMockingTests
             {
               "data": {
                 "obj": {
-                  "id": "1",
+                  "id": "Object:1",
                   "str": "string"
                 }
               }
@@ -177,15 +177,15 @@ public class AutomaticMockingTests
               "data": {
                 "objs": [
                   {
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   {
-                    "id": "2",
+                    "id": "Object:2",
                     "str": "string"
                   },
                   {
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ]
@@ -234,29 +234,29 @@ public class AutomaticMockingTests
               "data": {
                 "objsA": [
                   {
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   {
-                    "id": "2",
+                    "id": "Object:2",
                     "str": "string"
                   },
                   {
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ],
                 "objsB": [
                   {
-                    "id": "4",
+                    "id": "Object:4",
                     "str": "string"
                   },
                   {
-                    "id": "5",
+                    "id": "Object:5",
                     "str": "string"
                   },
                   {
-                    "id": "6",
+                    "id": "Object:6",
                     "str": "string"
                   }
                 ]
@@ -298,11 +298,11 @@ public class AutomaticMockingTests
               "data": {
                 "objs": [
                   {
-                    "id": "1"
+                    "id": "Object:1"
                   },
                   null,
                   {
-                    "id": "3"
+                    "id": "Object:3"
                   }
                 ]
               }
@@ -358,11 +358,11 @@ public class AutomaticMockingTests
               "data": {
                 "objs": [
                   {
-                    "id": "1"
+                    "id": "Object:1"
                   },
                   null,
                   {
-                    "id": "3"
+                    "id": "Object:3"
                   }
                 ]
               }
@@ -529,7 +529,7 @@ public class AutomaticMockingTests
               "data": {
                 "intrface": {
                   "__typename": "Object",
-                  "id": "1",
+                  "id": "Object:1",
                   "str": "string",
                   "num": 123
                 }
@@ -696,19 +696,19 @@ public class AutomaticMockingTests
                 "interfaces": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string",
                     "num": 123
                   },
                   {
                     "__typename": "Object",
-                    "id": "2",
+                    "id": "Object:2",
                     "str": "string",
                     "num": 123
                   },
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string",
                     "num": 123
                   }
@@ -876,14 +876,14 @@ public class AutomaticMockingTests
                 "interfaces": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string",
                     "num": 123
                   },
                   null,
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string",
                     "num": 123
                   }
@@ -954,14 +954,14 @@ public class AutomaticMockingTests
                 "interfaces": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string",
                     "num": 123
                   },
                   null,
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string",
                     "num": 123
                   }
@@ -1017,19 +1017,19 @@ public class AutomaticMockingTests
                 "interfaces": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string",
                     "num": 123
                   },
                   {
                     "__typename": "Object",
-                    "id": "2",
+                    "id": "Object:2",
                     "str": "string",
                     "num": null
                   },
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string",
                     "num": 123
                   }
@@ -1101,19 +1101,19 @@ public class AutomaticMockingTests
                 "interfaces": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string",
                     "num": 123
                   },
                   {
                     "__typename": "Object",
-                    "id": "2",
+                    "id": "Object:2",
                     "str": "string",
                     "num": null
                   },
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string",
                     "num": 123
                   }
@@ -1167,7 +1167,7 @@ public class AutomaticMockingTests
               "data": {
                 "unon": {
                   "__typename": "Object",
-                  "id": "1",
+                  "id": "Object:1",
                   "str": "string"
                 }
               }
@@ -1318,17 +1318,17 @@ public class AutomaticMockingTests
                 "unions": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   {
                     "__typename": "Object",
-                    "id": "2",
+                    "id": "Object:2",
                     "str": "string"
                   },
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ]
@@ -1480,13 +1480,13 @@ public class AutomaticMockingTests
                 "unions": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   null,
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ]
@@ -1551,13 +1551,13 @@ public class AutomaticMockingTests
                 "unions": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   null,
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ]
@@ -1607,17 +1607,17 @@ public class AutomaticMockingTests
                 "unions": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   {
                     "__typename": "Object",
-                    "id": "2",
+                    "id": "Object:2",
                     "str": null
                   },
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ]
@@ -1683,17 +1683,17 @@ public class AutomaticMockingTests
                 "unions": [
                   {
                     "__typename": "Object",
-                    "id": "1",
+                    "id": "Object:1",
                     "str": "string"
                   },
                   {
                     "__typename": "Object",
-                    "id": "2",
+                    "id": "Object:2",
                     "str": null
                   },
                   {
                     "__typename": "Object",
-                    "id": "3",
+                    "id": "Object:3",
                     "str": "string"
                   }
                 ]

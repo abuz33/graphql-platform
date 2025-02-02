@@ -58,14 +58,11 @@ internal sealed class MockFieldMiddleware
             {
                 nullIndex = nullDirective.AtIndex;
 
-                if (namedFieldType.IsScalarType() || namedFieldType.IsEnumType())
-                {
                     var currentListIndex = context.Parent<ObjectTypeInst>()?.Index;
                     if (currentListIndex.HasValue && currentListIndex == nullIndex)
                     {
                         context.Result = null;
                         return ValueTask.CompletedTask;
-                    }
                 }
             }
             else
@@ -80,11 +77,13 @@ internal sealed class MockFieldMiddleware
             if (context.Selection.Arguments.ContainsName("id"))
             {
                 var id = context.ArgumentValue<object>("id");
+                var typeFromId = GetTypeFromId(id);
                 if (namedFieldType.IsCompositeType())
                 {
                     var possibleTypes = context.Schema.GetPossibleTypes(namedFieldType);
 
-                    context.ValueType = possibleTypes.First();
+                    context.ValueType =
+                        possibleTypes.FirstOrDefault(t => t.Name == typeFromId) ?? possibleTypes.First();
                     context.Result = CreateObject(id);
                     return ValueTask.CompletedTask;
                 }
@@ -93,6 +92,7 @@ internal sealed class MockFieldMiddleware
             if (context.Selection.Arguments.ContainsName("ids"))
             {
                 var ids = context.ArgumentValue<object[]>("ids");
+                var typeFromId = GetTypeFromId(ids.FirstOrDefault());
 
                 IType nullableType = fieldType;
                 if (fieldType.IsNonNullType())
@@ -106,7 +106,8 @@ internal sealed class MockFieldMiddleware
                     {
                         var possibleTypes = context.Schema.GetPossibleTypes(namedFieldType);
 
-                        context.ValueType = possibleTypes.First();
+                        context.ValueType =
+                            possibleTypes.FirstOrDefault(t => t.Name == typeFromId) ?? possibleTypes.First();
                         context.Result = CreateListOfObjects(ids, nullIndex);
                         return ValueTask.CompletedTask;
                     }
@@ -132,7 +133,7 @@ internal sealed class MockFieldMiddleware
             var possibleTypes = context.Schema.GetPossibleTypes(namedFieldType);
 
             context.ValueType = possibleTypes.First();
-            context.Result = CreateObject(id);
+            context.Result = CreateObject(id, type: possibleTypes.First());
         }
         else if (fieldType.IsListType())
         {
@@ -143,7 +144,7 @@ internal sealed class MockFieldMiddleware
                 var possibleTypes = context.Schema.GetPossibleTypes(namedFieldType);
 
                 context.ValueType = possibleTypes.First();
-                context.Result = CreateListOfObjects(ids, nullIndex);
+                context.Result = CreateListOfObjects(ids, nullIndex, possibleTypes.First());
             }
             else if (namedFieldType is EnumType enumType)
             {
@@ -184,9 +185,11 @@ internal sealed class MockFieldMiddleware
         return enumType.Values.FirstOrDefault()?.Value;
     }
 
-    private object CreateObject(object? id, int? index = null)
+    private object CreateObject(object? id, int? index = null, ObjectType? type = null)
     {
-        return new ObjectTypeInst(id, index);
+        var idForType = CreateIdForType(id, type);
+
+        return new ObjectTypeInst(idForType, index);
     }
 
     private object?[] CreateListOfScalars(INamedType scalarType, int? nullIndex, AutomaticMockingContext mockingContext)
@@ -203,10 +206,10 @@ internal sealed class MockFieldMiddleware
             .ToArray();
     }
 
-    private object?[] CreateListOfObjects(object?[] ids, int? nullIndex)
+    private object?[] CreateListOfObjects(object?[] ids, int? nullIndex, ObjectType? type = null)
     {
         return ids
-            .Select((itemId, index) => nullIndex == index ? null : CreateObject(itemId, index))
+            .Select((itemId, index) => nullIndex == index ? null : CreateObject(itemId, index, type))
             .ToArray();
     }
 
@@ -224,6 +227,31 @@ internal sealed class MockFieldMiddleware
             .SetPath(path)
             .SetLocations([context.Selection.SyntaxNode])
             .Build();
+    }
+
+    private static object? CreateIdForType(object? id, ObjectType? type)
+    {
+        if (id is null || type is null)
+        {
+            return id;
+        }
+
+        return type.Name + ":" + id;
+    }
+
+    private static string? GetTypeFromId(object? id)
+    {
+        if (id is string idString)
+        {
+            var parts = idString.Split(":");
+
+            if (parts.Length == 2)
+            {
+                return parts[0];
+            }
+        }
+
+        return null;
     }
 
     private record ObjectTypeInst(object? Id = null, int? Index = null);

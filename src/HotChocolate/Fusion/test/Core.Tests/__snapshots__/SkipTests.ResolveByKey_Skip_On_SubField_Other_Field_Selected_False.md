@@ -7,19 +7,19 @@
   "data": {
     "products": [
       {
-        "id": "1",
+        "id": "Product:1",
         "name": "string",
         "price": 123,
         "other": "string"
       },
       {
-        "id": "2",
+        "id": "Product:2",
         "name": "string",
         "price": 123,
         "other": "string"
       },
       {
-        "id": "3",
+        "id": "Product:3",
         "name": "string",
         "price": 123,
         "other": "string"

@@ -22,7 +22,7 @@
   ],
   "data": {
     "product": {
-      "id": "1",
+      "id": "Product:1",
       "brand": null
     }
   }

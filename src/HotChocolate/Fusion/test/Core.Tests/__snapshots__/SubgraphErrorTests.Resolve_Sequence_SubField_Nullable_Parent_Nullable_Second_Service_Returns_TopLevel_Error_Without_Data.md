@@ -11,9 +11,9 @@
   ],
   "data": {
     "product": {
-      "id": "1",
+      "id": "Product:1",
       "brand": {
-        "id": "2",
+        "id": "Brand:2",
         "name": null
       }
     }
